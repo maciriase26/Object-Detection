@@ -20,6 +20,8 @@ RECT_COLOR = (255, 0, 0)  # blue (BGR)
 TEXT_COLOR = (255, 255, 255)  # white
 FPS_AVG_FRAME_COUNT = 10
 
+stop_program = False
+
 def visualize(image, detection_result) -> np.ndarray:
     """Draws bounding boxes on the input image and return it.
     Args:
@@ -85,6 +87,14 @@ def show_fps(
         font_thickness,
     )
 
+def click_button(event, x, y, flags, param):
+    global stop_program
+    if event == cv2.EVENT_LBUTTONDOWN:
+        polygon = np.array([[(20,20),(150,20),(150,70),(20,70)]])
+        
+        if cv2.pointPolygonTest(polygon, (x,y), False) > 0:
+            stop_program = True
+
 def run(args):
     """Continuously run inference on images acquired from the camera.
     Args:
@@ -146,6 +156,12 @@ def run(args):
         detector.detect_async(mp_image, counter)
         current_frame = mp_image.numpy_view()
         current_frame = cv2.cvtColor(current_frame, cv2.COLOR_RGB2BGR)
+        
+        # Draw a button to stop the program
+        polygon = np.array([[(20,20),(150,20),(150,70),(20,70)]])
+        cv2.fillPoly(current_frame, polygon, (0,0,200))
+        cv2.putText(current_frame, 'EXIT', (35,61), cv2.FONT_HERSHEY_PLAIN, 3, (245, 245, 245), 3)
+        cv2.setMouseCallback('Object Detection', click_button)
 
         if args.fps:
             # Calculate the FPS
@@ -165,7 +181,7 @@ def run(args):
             cv2.imshow("Object Detection", current_frame)
 
         # Exit on pressing 'q'
-        if cv2.waitKey(5) & 0xFF == ord("q"):
+        if cv2.waitKey(5) & 0xFF == ord("q") or stop_program:
             break
 
     cap.release()
