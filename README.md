@@ -7,19 +7,30 @@
 - NumPy & CSV for data handling
 - EfficientDet Lite2 model (.tflite)
 
+<<<<<<< HEAD
 ### Example Objects Detected
+=======
+### Example Objects Detected (in class)
+>>>>>>> b22f257b493e7e5fd759ebbf6c771fb528aca145
 - Person 
 - Cell phone 
-- Laptop 
+- Laptop
+- TV
 - Chair 
 - Cup
 
-To run in terminal-
-
+To run in terminal:
 ```
 python3 object_detector_webcam.py --model efficientdet_lite2.tflite
 ```
 ### REST API
+
+Run in terminal:
+```
+python3 api_server.py
+```
+ In another terminal:
+
 ```
 curl -X POST http://127.0.0.1:5050/start
 curl http://127.0.0.1:5050/status
