@@ -1,11 +1,11 @@
 ### Technologies used
 
--Python 3.12
--MediaPipe Tasks (vision.object_detector)
--OpenCV
--Flask (for REST API)
--NumPy & CSV for data handling
--EfficientDet Lite2 model (.tflite)
+- Python 3.12
+- MediaPipe Tasks (vision.object_detector)
+- OpenCV
+- Flask (for REST API)
+- NumPy & CSV for data handling
+- EfficientDet Lite2 model (.tflite)
 
 
 To run in terminal-
