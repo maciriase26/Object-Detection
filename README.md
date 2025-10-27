@@ -8,7 +8,7 @@
 - EfficientDet Lite2 model (.tflite)
 
 ### Example Objects Detected
-- Person �
+- Person 
 - Cell phone 
 - Laptop 
 - Chair 
