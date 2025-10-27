@@ -14,6 +14,8 @@ from mediapipe.tasks.python import vision
 import logging, csv, os
 from datetime import datetime
 
+stop_program = False
+
 logging.basicConfig(
     filename="system.log",
     level=logging.INFO,
@@ -105,6 +107,15 @@ def show_fps(
         font_thickness,
     )
 
+def click_button(event, x, y, flags, param):
+    global stop_program
+    
+    if event == cv2.EVENT_LBUTTONDOWN:
+        polygon = np.array([[(20,20), (150, 20), (150, 60), (20, 60)]])
+        
+        is_inside = cv2.pointPolygonTest(polygon, (x, y), False)
+        if is_inside > 0:
+            stop_program = True
 
 def run(args):
     """Continuously run inference on images acquired from the camera."""
@@ -164,10 +175,19 @@ def run(args):
 
             # Run object detection asynchronously
             detector.detect_async(mp_image, counter)
+            
+          
 
             # Convert back to BGR for OpenCV display
             current_frame = mp_image.numpy_view()
             current_frame = cv2.cvtColor(current_frame, cv2.COLOR_RGB2BGR)
+            
+            polygon = np.array([[(20,20), (150, 20), (150, 60), (20, 60)]])
+            cv2.fillPoly(current_frame, polygon, (0, 0, 200))  # Dark blue button
+            cv2.putText(current_frame, "EXIT", (30,60), cv2.FONT_HERSHEY_PLAIN, 3, (245,245,245), 3)
+            
+            cv2.setMouseCallback("Object Detection", click_button)
+
 
             # Optional FPS overlay
             if args.fps:
@@ -197,7 +217,7 @@ def run(args):
                 cv2.imshow("Object Detection", current_frame)
 
             # Exit on 'q'
-            if cv2.waitKey(5) & 0xFF == ord("q"):
+            if cv2.waitKey(5) & 0xFF == ord("q") or stop_program:
                 break
 
     finally:
