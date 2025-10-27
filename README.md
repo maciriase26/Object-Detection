@@ -1,4 +1,4 @@
-### Technologies used
+ ### Technologies used
 
 - Python 3.12
 - MediaPipe Tasks (vision.object_detector)
@@ -7,6 +7,12 @@
 - NumPy & CSV for data handling
 - EfficientDet Lite2 model (.tflite)
 
+### Example Objects Detected
+- Person �
+- Cell phone 
+- Laptop 
+- Chair 
+- Cup
 
 To run in terminal-
 
