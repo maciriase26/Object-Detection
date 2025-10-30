@@ -9,7 +9,7 @@
 
 
 ### Example Objects Detected
-![Alt text] (images/example.png)
+![Alt text] (Object-Detection/image/example.png)
 
 =======
 ### Example Objects Detected (in class)
