@@ -7,11 +7,12 @@
 - NumPy & CSV for data handling
 - EfficientDet Lite2 model (.tflite)
 
-<<<<<<< HEAD
+
 ### Example Objects Detected
+
+
 =======
 ### Example Objects Detected (in class)
->>>>>>> b22f257b493e7e5fd759ebbf6c771fb528aca145
 - Person 
 - Cell phone 
 - Laptop
