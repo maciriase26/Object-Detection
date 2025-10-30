@@ -1,3 +1,10 @@
+ ### GROUP MEMBERS:
+ - Mercy Yankey
+ - Osen Mac-iriase
+ - Andre Ebu
+ - Saidamir Osimov
+ - Aayush Rajak
+ 
  ### Technologies used
 
 - Python 3.12
