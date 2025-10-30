@@ -9,7 +9,7 @@
 
 
 ### Example Objects Detected
-https://github.com/maciriase26/Object-Detection/blob/b8d5ae1b7494a6fd3a4801f25885d7f6d72dee6f/images/Example.png
+![Alt text] (images/example.png)
 
 =======
 ### Example Objects Detected (in class)
